@@ -1,0 +1,19 @@
+{
+  "name": "boards-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx concurrently \"npm run server\" \"npm run client\"",
+    "server": "npx cross-env-shell \"cd server && npm start\"",
+    "client": "npx cross-env-shell \"cd client && npm start\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "concurrently": "^7.0.0",
+    "cross-env": "^7.0.3"
+  }
+}
