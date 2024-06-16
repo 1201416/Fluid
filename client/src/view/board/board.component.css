@@ -1,0 +1,91 @@
+.section-boards {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    width: 100%;
+  }
+  
+  .board-title{
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  
+  .board input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #e9540e;
+    outline: none;
+    background: transparent;
+  }
+  
+  .board input::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  .board input:-webkit-autofill,
+  .board input:-webkit-autofill:hover, 
+  .board input:-webkit-autofill:focus, 
+  .board input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px  inset !important; 
+    -webkit-text-fill-color: #fff !important;
+  }
+  
+  .wrapper-buttons{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button{
+    padding: 10px 28px;
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #e9540e;
+    border: 0;
+    cursor: pointer;
+  }
+  .list_add {
+    position: relative;
+    float: left;
+    width: 70px;
+    height: 60px;
+    background: #f07840cb;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .list_add > p {
+    display: block;
+    color: #e9540e;
+    font-size: 38px;
+    margin-top: 10px;
+    text-align: center;
+    height: 60px;
+  }
+  
+  .list_add > p > i {
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  
+  .list_add_active > p > i {
+    -webkit-transform: rotate(130deg);
+    -ms-transform: rotate(130deg);
+    -o-transform: rotate(130deg);
+    transform: rotate(130deg);
+  }
+
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');

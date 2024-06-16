@@ -1,0 +1,133 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(#efdecd, #f48403);
+}
+
+.register form {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.wrapper-form {
+    width: 350px;
+    padding: 25px;
+    background-color: #f48403;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.register form input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 45px;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    outline: none;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+}
+
+.register form input::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #f48403 inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.register-title{
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+}
+
+.register-button{
+    padding: 10px 28px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-right: 15px;
+    background: #efdecd;
+    color: #f48403d7;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background: #03f45fd7;
+    color: #fff;
+    box-shadow: 0 0 5px #f43303d7,
+    0 0 25px #f48403d7,
+    0 0 50px #f48403d7,
+    0 0 100px #f48403d7;
+}
+
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+    align-self: flex-start;
+}
+
+.login-link a {
+    color: #efdecd;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.login-link a:hover {
+    color: #03f45fd7;
+}
+
+.checkbox label {
+    position: relative;
+    top: -2px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox-label input {
+    margin-right: 10px;
+}
+
+.checkbox-label .terms-text {
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+
+.checkbox-label .terms-text a:hover {
+    text-decoration: underline;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #ffffff;
+}
+
+.form-group >* {
+    margin: auto 10px;
+}
+
