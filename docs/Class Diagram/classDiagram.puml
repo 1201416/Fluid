@@ -1,0 +1,32 @@
+@startuml
+
+class User{
+    -UserId id
+    -UserName name
+    -UserEmail email
+    -UserPassword password
+    +getName(): UserName
+    +getEmail(): UserEmail
+    +getPassword(): UserPassword 
+    +create(name: UserName, email: UserEmail, password: UserPassword, id?: UserId): User
+}
+
+class Board{
+    -BoardId id
+    -User boardOwner
+    -BoardTitle boardTitle
+    -BoardPermission[] boardPermissions
+    -string fluidId
+    +getid(): BoardId
+    +getBoardOwner(): User
+    +getBoardTitle(): BoardTitle
+    +getBoardPermissions(): BoardPermission[]
+    +getFluidId(): string
+    +create(boardOwner: User, boardTitle: BoardTitle, boardPermissions: BoardPermission[], fluidId: string, id?: BoardId): Board
+}
+
+
+User "1" -- "0..*" Board : owns
+
+
+@enduml

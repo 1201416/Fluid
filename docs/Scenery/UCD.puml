@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+"User" --> (Logs in)
+"User" --> (Register myself)
+"User" --> (Visualize all boards available)
+"User" --> (Create a board)
+"User" --> (Change data inside the board)
+"User" --> (Connect to Azure Fluid Relay)
+
+@enduml

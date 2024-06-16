@@ -1,0 +1,76 @@
+@startuml
+hide methods
+left to right direction
+
+skinparam classAttributeIconSize 0
+
+skinparam class {
+    LifeLineBorderColor DodgerBlue
+    LifeLineBackgroundColor APPLICATION
+    BackgroundColor #D8F5FF
+    ArrowColor DodgerBlue
+    BorderColor DodgerBlue
+}
+
+skinparam packageStyle rectangle
+
+package "User Aggregate"{
+    entity User <<entity>><<root>>
+
+    card UserName <<Value Object>>{
+    }
+
+    card UserEmail <<Value Object>>{
+    }
+
+    card UserPassword <<Value Object>>{
+    }
+
+    User --> UserName
+    User --> UserEmail
+    User --> UserPassword
+}
+
+package "Board Aggregate"{
+    entity Board <<entity>><<root>>
+
+    card BoardTitle <<Value Object>>{
+    }
+
+    card FluidId <<Value Object>>{
+    }
+
+    Board --> BoardTitle
+    Board --> FluidId
+}
+
+package "BoardPermission Aggregate"{
+    entity BoardPermission <<entity>><<root>>
+
+    card AccessLevel <<Value Object>>{
+    }
+
+    enum AccessLevelType <<Value Object>>{
+        WRITE,
+        READ
+    }
+
+    BoardPermission --> AccessLevel
+    AccessLevel --> AccessLevelType
+}
+
+package "Azure Fluid Relay Aggregate"{
+    entity AzureFluidRelay <<entity>><<root>>
+
+    card ConnectionConfig <<Value Object>>{
+    }
+
+    AzureFluidRelay --> ConnectionConfig
+}
+
+Board --> "1" User : belongs to
+Board --> "*" BoardPermission: has
+Board --> "1" AzureFluidRelay: stores data to
+BoardPermission --> "1" User: corresponds to
+
+@enduml

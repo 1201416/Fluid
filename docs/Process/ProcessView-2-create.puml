@@ -1,0 +1,32 @@
+@startuml
+'http://plantuml.com/skinparam.html
+
+actor "User" as user
+participant "Client" as Client
+participant "Server" as Server
+database "Database Container" as db
+
+user -> Client: wants to create
+
+activate Client
+Client --> user: asks for the title
+deactivate Client
+
+user -> Client: gives necessary \ninformation to create
+activate Client
+Client -> Server: gives necessary \ninformation to create
+activate Server
+Server -> db: inserts
+activate db
+db --> Server: inserted
+deactivate db
+Server --> Client: inserted
+deactivate Server
+alt successful case
+user <-- Client: created successfully
+else unsuccessfull case
+user <-- Client: something went wrong \nwith the creation
+end
+deactivate Client
+
+@enduml

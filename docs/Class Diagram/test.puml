@@ -1,0 +1,117 @@
+
+interface IUserDTO {
+    +name: string
+    +email: string
+    +password: string
+}
+
+interface IUserRepo {
+    +exists(user: User): boolean
+    +save(user: User): User
+    +findByEmail(email: string): User
+    +findById(userId: UserId | string): User
+}
+
+class UserRepo implements IUserRepo{
+    -Model<IUserPersistence & Document> userSchema
+
+    +constructor(userSchema: Model<IUserPersistence & Document>)
+    +exists(user: User): boolean
+    +save(user: User): User
+    +findByEmail(email: string): User
+    +findById(userId: UserId | string): User
+}
+
+interface IUserPersistence {
+    +_id: string
+    +name: string
+    +email: string
+    +password: string
+}
+
+class UserMap {
+    +toDTO(user: User): IUserDTO
+    +toDomain(raw: any): User
+    +toPersistence(user: User): any
+}
+
+interface IUserService {
+    +signIn(userDTO: IUserDTO): Promise<Result<{ userDTO: IUserDTO, token: string }>>
+    +signUp(userDTO: IUserDTO): Promise<Result<{ userDTO: IUserDTO, token: string }>>
+}
+
+class UserService implements IUserService {
+    -IUserRepo: UserRepo
+
+    +constructor(userRepo: IUserRepo)
+    +signIn(userDTO: IUserDTO): Promise<Result<{ userDTO: IUserDTO, token: string }>>
+    +signUp(userDTO: IUserDTO): Promise<Result<{ userDTO: IUserDTO, token: string }>>
+    -generateToken(user: User): string
+}
+
+interface IBoardDTO {
+    +boardOwner: string
+    +boardTitle: string
+    +boardPermissions: string[]
+    +fluidId: string
+}
+
+interface IBoardRepo {
+    +exists(board: Board) : boolean
+    +save(board: Board) : Board
+    +findById(boardId: BoardId | string) : Board
+    +getMyBoards(user: User) : Board[]
+}
+
+class BoardRepo implements IBoardRepo {
+    -models : any
+    -boardSchema : Model<IBoardPersistence & Document>
+
+    +constructor(boardSchema: Model<IBoardPersistence & Document>)
+    +exists(board: Board) : boolean
+    +save(board: Board) : Board
+    +findById(boardId: BoardId | string) : Board
+    +getMyBoards(user: User) : Board[]
+}
+
+interface IBoardPersistence {
+    +domainId: string
+    +boardOwner: string
+    +boardTitle: string
+    +boardPermissions: string[]
+    +fluidId: string
+}
+
+class BoardMap {
+    +toDTO(board: Board): IBoardDTO
+    +toDomain(raw: any): Board
+    +toPersistence(board: Board): any
+}
+
+class BoardPermission {
+    -string id
+    -User user
+    -AccessLevel accessLevel
+}
+
+interface IPermissionPersistence {
+    +id: string
+    +user: string
+    +accesslevel: string
+}
+
+interface IBoardService {
+    +createBoard(boardDTO: IBoardDTO): Promise<Result<{ boardDTO: IBoardDTO }>>
+    +getBoard(id: string): Promise<Result<{ boardDTO: IBoardDTO }>>
+    +getMyBoards(email: string): Promise<Result<IBoardDTO[]>>
+}
+
+class BoardService implements IBoardService {
+    -userRepo: IUserRepo
+    -boardRepo: IBoardRepo
+
+    +constructor(userRepo: IUserRepo, boardRepo: IBoardRepo)
+    +createBoard(boardDTO: IBoardDTO): Promise<Result<{ boardDTO: IBoardDTO }>>
+    +getBoard(id: string): Promise<Result<{ boardDTO: IBoardDTO }>>
+    +getMyBoards(email: string): Promise<Result<IBoardDTO[]>>
+}

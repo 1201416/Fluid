@@ -1,0 +1,19 @@
+@startuml
+'http://plantuml.com/skinparam.html
+autonumber 1
+
+participant Server
+participant Database
+
+[-> Server: GET
+activate Server
+    Server -> Database: search
+    Database --> Server
+    alt succesfull case
+        [<- Server: 200 Code 
+    else 
+        [<- Server: 400 Code 
+    end
+deactivate Server
+
+@enduml

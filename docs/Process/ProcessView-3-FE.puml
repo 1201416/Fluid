@@ -1,0 +1,52 @@
+@startuml
+
+actor User as user<<interaction>>
+participant View as view<<component>>
+participant Component as comp<<component>>
+participant Service as service<<component>>
+participant HTTPDriver as http<<component>>
+
+
+autonumber
+activate user
+
+user -> view: Asks to list boards
+
+activate view
+
+view -> comp: requests boards
+
+activate comp
+
+comp -> service : requests boards
+
+activate service
+
+service -> http : requests the use of GET HTTP method for boards
+
+activate http
+
+http ->  : GET boards
+
+http <--  : HTTP response
+
+http --> service: response
+
+deactivate http
+
+service --> comp:  data
+
+deactivate service
+
+comp --> view: data
+
+deactivate comp
+
+view --> user: data
+
+deactivate view
+
+deactivate user
+
+
+@enduml

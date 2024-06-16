@@ -1,0 +1,32 @@
+@startuml
+'http://plantuml.com/skinparam.html
+
+actor "User" as user
+actor "Logged in users" as lgUser
+participant "Client" as client
+participant "Server" as server
+database "Azure Relay Service" as Azure
+
+user -> client: wants to edit
+activate client
+client -> Azure: find container
+activate Azure
+Azure --> client: container
+deactivate Azure
+client --> user: shows the board
+deactivate client
+user -> client: changes the board
+activate client
+client -> Azure : saves newly updated data
+activate Azure
+Azure --> client : saves
+Azure -> lgUser : retrieves all data changed
+activate lgUser
+lgUser --> Azure : visualizes
+deactivate lgUser
+Azure --> client : shows updated data
+deactivate Azure
+user <-- client: edited successfully
+deactivate client
+
+@enduml

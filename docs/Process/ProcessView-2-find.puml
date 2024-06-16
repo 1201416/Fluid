@@ -1,0 +1,26 @@
+@startuml
+'http://plantuml.com/skinparam.html
+
+actor "User" as user
+participant "Client" as Client
+participant "Server" as Server
+database "Database Container" as db
+
+user -> Client: wants to see boards
+activate Client
+Client -> Server: attempts to get the information
+activate Server
+Server -> db: searches
+activate db
+db --> Server: found
+deactivate db
+Server --> Client: found
+deactivate Server
+alt successful case
+user <-- Client: displayed successfully
+else unsuccessfull case
+user <-- Client: something went wrong \nwith the display
+end
+deactivate Client
+
+@enduml

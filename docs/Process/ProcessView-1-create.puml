@@ -1,0 +1,22 @@
+@startuml
+'http://plantuml.com/skinparam.html
+
+actor "User" as user
+participant "Boards" as Boards
+
+user -> Boards: wants to create
+
+activate Boards
+Boards --> user: asks for the necessary\n information
+deactivate Boards
+
+user -> Boards: gives necessary \ninformation to create
+activate Boards
+alt successful case
+    user <-- Boards: created successfully
+else
+    user <-- Boards: something went wrong \nwith the creation
+end
+deactivate Boards
+
+@enduml

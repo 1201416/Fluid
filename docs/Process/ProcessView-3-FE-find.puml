@@ -1,0 +1,68 @@
+@startuml
+
+actor User as user<<interface>>
+participant View as view<<component>>
+participant Component as comp<<component>>
+participant Service as service<<component>>
+participant HTTPDriver as http<<component>>
+
+
+autonumber
+activate user
+
+user -> view: onLoad
+
+activate view
+
+view -> comp: requests board data
+
+activate comp
+
+comp -> service : requests board data
+
+activate service
+
+service -> http : GET method for board
+
+activate http
+
+http ->  : GET board
+
+http <--  : HTTP response
+
+http --> service: response
+
+deactivate http
+
+alt [response contains board]
+service --> comp: board data
+
+comp --> view: board data
+
+view --> user: displays the board data
+
+else [unsuccessfull]
+service --> comp: empty responde body
+
+comp --> view: informs that no board data is available
+
+view --> user: display no board message
+
+service --> comp: informs that an error occurred
+
+deactivate service
+
+comp --> view: informs that an error occurred
+
+deactivate comp
+
+view --> user: display error message
+
+deactivate view
+
+end
+
+deactivate user
+
+
+@enduml

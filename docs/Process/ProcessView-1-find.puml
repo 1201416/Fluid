@@ -1,0 +1,14 @@
+@startuml
+'http://plantuml.com/skinparam.html
+
+actor "User" as user
+participant "Boards" as Boards
+
+user -> Boards: logs in
+
+alt filtered
+activate Boards
+Boards --> user: displays boards
+deactivate Boards
+
+@enduml

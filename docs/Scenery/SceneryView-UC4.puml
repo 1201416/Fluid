@@ -1,0 +1,7 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+
+"User" --> (Create a board)
+@enduml
