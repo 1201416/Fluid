@@ -3,11 +3,6 @@
 
 module.exports = {
     collectCoverage: false,
-    collectCoverageFrom: [
-      'src/controllers/taskController.ts',
-      'src/services/taskService.ts',
-      'src/domain/task/*.ts'
-    ],
     moduleFileExtensions: [
       'js',
       'ts',
